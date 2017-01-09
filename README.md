@@ -1,33 +1,33 @@
 ZipKit
 ======
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ZipKit is an Objective-C framework for reading and writing Zip archives in OS X and iOS apps. It supports:
+
 * the standard [PKZip format](http://www.pkware.com/documents/casestudies/APPNOTE.TXT);
 * files larger than 4GB in size using PKZip's zip64 extensions (ZKFileArchive only);
 * optionally, resource forks in a manner compatible with OS X's Archive Utility (in the OS X targets only);
 * clean interruption, so archiving can be cancelled by the invoking object (e.g., a NSOperation or NSThread).
 
-It was developed by Karl Moskowski (aka [@kolpanic](https://twitter.com/kolpanic)) and released under the BSD license.
+It was developed by Karl Moskowski (aka [@kolpanic](https://twitter.com/kolpanic)) and released under the BSD license. iOS framework and Carthage support were added by [Stuart Malone](https://github.com/samalone).
 
 If you find ZipKit to be useful, please [let me know](http://about.me/kolpanic).
 
 ###Requirements
 
-ZipKit requires Xcode 4.6. It works on OS X 10.8 Mountain Lion, and iOS 6.0 or greater. (If you're using older versions, make sure you `git checkout 1.0.0`. The project at that tag supports garbage collection and manual memory management.) The Xcode project contains three targets:
-* an OS X framework;
-* an OS X static library;
-* an iOS static library.
+ZipKit requires Xcode 8.2.1. It works on OS X 10.8 Mountain Lion, and iOS 8.0 or greater. The Xcode project contains two targets:
+
+* an OS X framework
+* an iOS framework
 
 ###Using ZipKit
 
-1. If you're using git for your project, first add ZipKit as a submodule to your project. If you're not using git, clone ZipKit into your project's directory. (If you're using another VCS, you might want to ignore the ZipKit sub-project, or its .git/ directory.)
-2. Open your .xcodeproj and drag ZipKit.xcodeproj from the Finder to Xcode's Project Navigator for your project. The Frameworks group is a good place for it.
-3. In the Project Navigator for your project, disclose ZipKit's Products and note the one you want to use in your project.
-4. In the Project Navigator, select your project at the top, then:
-	* add the relevant ZipKit product to your target's Linked Frameworks and Libraries section, and add it to the your target's Target Dependencies under Build Phases;
-	* add libz.dylib to your target's Linked Frameworks;
-	* add ./ZipKit/ to your target's User Header Search Paths setting.
-5. If you're using one of ZipKit's static library targets in your project, add -ObjC to your target's Other Linker Flags. You may have to add -all_load as well. (Objective-C categories aren't properly linked by default when using static libraries.)
+This fork of ZipKit supports [Carthage](https://github.com/Carthage/Carthage). To use it:
+
+1. Add `github "samalone/ZipKit" ~> 1.0` to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
+2. In a terminal window, go to your Xcode project directory and type `carthage bootstrap`.
+3. Drag the file `Carthage\Build\iOS\ZipKit.framework` or `Carthage\Build\macOS\ZipKit.framework` to the Embedded Binaries section of the General settings for your application target.
  
 See the accompanying demo projects for guidance.
 
