@@ -33,8 +33,8 @@ typedef NS_OPTIONS(NSUInteger, ZKCalendarUnit)
 }
 
 - (UInt32) zk_dosDate {
-	NSUInteger options = ZKCalendarUnitYear | ZKCalendarUnitMonth | ZKCalendarUnitDay |
-    ZKCalendarUnitHour | ZKCalendarUnitMinute | ZKCalendarUnitSecond;
+	NSUInteger options = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
 	NSDateComponents *comps = [[NSCalendar currentCalendar] components:options fromDate:self];
 	return ((UInt32)(comps.day + 32 * comps.month + 512 * (comps.year - 1980)) << 16) | (UInt32)(comps.second / 2 + 32 * comps.minute + 2048 * comps.hour);
 }
